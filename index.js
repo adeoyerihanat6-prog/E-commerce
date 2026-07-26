@@ -19,7 +19,10 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // Middleware
-app.use(cors()); // Enables cross-origin requests from your React frontend
+app.use(cors({
+  origin: ['https://your-vercel-app-name.vercel.app', 'http://localhost:5173'],
+  credentials: true
+})); // Enables cross-origin requests from your React frontend
 app.use(express.json()); // Parses incoming JSON payloads
 app.use(express.urlencoded({ extended: true })); // Parses URL-encoded form data
 app.use(express.static(path.join(__dirname, 'public')));
