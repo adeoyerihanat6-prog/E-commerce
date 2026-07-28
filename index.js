@@ -41,7 +41,7 @@ app.use('/api/orders', orderRoutes);
 
 // Root Route
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.json({ message: "VELORA API is running smoothly 🚀" });
 });
 
 // Database Connection & Server Startup
