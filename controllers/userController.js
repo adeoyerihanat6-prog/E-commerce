@@ -16,6 +16,8 @@ const getAllUsers = async (req, res) => {
   }
 };
 
+
+
 const registerUser = async (req, res) => {
   const { name, email, password, contact } = req.body;
 
@@ -40,39 +42,47 @@ const registerUser = async (req, res) => {
 
     await newUser.save();
 
-    // Send welcome email
-    await sendEmail({
+    // Send welcome email (non-blocking)
+    sendEmail({
       to: newUser.email,
       subject: "🎉 Welcome to Velora!",
       html: `
         <div style="font-family: Arial, sans-serif; padding: 20px;">
           <h2 style="color:#7C3AED;">Welcome to Velora, ${newUser.name}! 🎉</h2>
-
           <p>Thank you for creating an account with <strong>Velora</strong>.</p>
-
           <p>We're excited to have you join our community of shoppers.</p>
-
           <p>You can now:</p>
-
           <ul>
             <li>🛍️ Browse thousands of products</li>
             <li>❤️ Save your favourite items</li>
             <li>🛒 Place orders securely</li>
             <li>📦 Track your orders</li>
           </ul>
-
           <p>Happy Shopping! ✨</p>
-
           <hr>
-
-          <p style="color:#777;font-size:13px;">
-            Team Velora
-          </p>
+          <p style="color:#777;font-size:13px;">Team Velora</p>
         </div>
       `,
-    });
+    }).catch((err) => console.error("Email send failed:", err));
 
-    res.status(201).json(newUser);
+    // 1. Generate JWT Token (replace process.env.JWT_SECRET with your secret variable)
+    const token = jwt.sign(
+      { id: newUser._id, role: newUser.role },
+      process.env.JWT_SECRET || "your_jwt_secret",
+      { expiresIn: "7d" }
+    );
+
+    // 2. Return the token AND the sanitized user object
+    res.status(201).json({
+      token,
+      user: {
+        _id: newUser._id,
+        name: newUser.name,
+        email: newUser.email,
+        contact: newUser.contact,
+        role: newUser.role,
+      },
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: error.message });
