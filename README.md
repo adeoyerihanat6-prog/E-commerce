@@ -88,7 +88,7 @@ This project was built to demonstrate my backend development skills, including A
 # 📂 Project Structure
 
 ```bash
-Velora_Backend
+E-commerce
 │
 ├── config
 │   └── db.js
