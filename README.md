@@ -175,13 +175,13 @@ Make sure you have:
 Clone the repository:
 
 ```bash
-git clone YOUR_BACKEND_REPOSITORY_LINK
+git clone https://github.com/adeoyerihanat6-prog/E-commerce
 ```
 
 Navigate into the project:
 
 ```bash
-cd Velora_Backend
+cd E-commerce
 ```
 
 Install dependencies:
@@ -190,27 +190,8 @@ Install dependencies:
 npm install
 ```
 
----
 
-## 🔐 Environment Variables
 
-Create a `.env` file in the root directory:
-
-```env
-PORT=5000
-
-MONGO_URI=your_mongodb_connection_string
-
-JWT_SECRET=your_secret_key
-
-CLOUDINARY_NAME=your_cloudinary_name
-
-CLOUDINARY_API_KEY=your_cloudinary_api_key
-
-CLOUDINARY_API_SECRET=your_cloudinary_api_secret
-```
-
----
 
 ## ▶️ Run The Server
 
