@@ -1,12 +1,12 @@
 # 🛍️ Velora Backend — E-commerce API
 
-![Velora Backend](./screenshots/banner.png)
+![Velora Backend](./screenshots/vel.png)
 
 ## 🌐 API / Backend Demo
 
 🔗 Backend URL: [Add your deployed backend URL]
 
-🔗 Frontend Repository: [Velora Frontend](YOUR_FRONTEND_REPO_LINK)
+🔗 Frontend Repository: [Velora Frontend](https://github.com/adeoyerihanat6-prog/E-commerce_frontend)
 
 ---
 
